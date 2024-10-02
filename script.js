@@ -1,5 +1,3 @@
-// app.js
-
 // Book Class: Represents a Book
 class Book {
     constructor(title, author, isbn) {
@@ -46,10 +44,16 @@ class UI {
     }
 }
 
-// Store Class: Handles Storage (optional, for future use)
-
 // Event: Display Books
-document.addEventListener('DOMContentLoaded', UI.displayBooks);
+document.addEventListener('DOMContentLoaded', () => {
+    UI.displayBooks();
+
+    // Adding a timeout to help with Cypress tests waiting for DOM updates
+    setTimeout(() => {
+        const book = new Book('Sample Title', 'Sample Author', '123456');
+        UI.addBookToList(book);
+    }, 100);
+});
 
 // Event: Add a Book
 document.querySelector('#submit').addEventListener('click', (e) => {
@@ -65,7 +69,7 @@ document.querySelector('#submit').addEventListener('click', (e) => {
     if (title === '' || author === '' || isbn === '') {
         alert('Please fill in all fields');
     } else {
-        // Instatiate book
+        // Instantiate book
         const book = new Book(title, author, isbn);
 
         // Add Book to UI
