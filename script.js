@@ -1,5 +1,6 @@
-//your JS code here. If required.
-// Book Class to represent a Book
+// app.js
+
+// Book Class: Represents a Book
 class Book {
     constructor(title, author, isbn) {
         this.title = title;
@@ -8,15 +9,18 @@ class Book {
     }
 }
 
-// UI Class to handle UI tasks
+// UI Class: Handle UI Tasks
 class UI {
     static displayBooks() {
+        // Initial empty array to simulate fetching books if necessary
         const books = [];
+
         books.forEach((book) => UI.addBookToList(book));
     }
 
     static addBookToList(book) {
         const list = document.querySelector('#book-list');
+
         const row = document.createElement('tr');
 
         row.innerHTML = `
@@ -30,8 +34,8 @@ class UI {
     }
 
     static deleteBook(el) {
-        if(el.classList.contains('delete')) {
-            el.parentElement.parentElement.remove();
+        if (el.classList.contains('delete')) {
+            el.parentElement.parentElement.remove(); // Removes the book row
         }
     }
 
@@ -42,19 +46,32 @@ class UI {
     }
 }
 
+// Store Class: Handles Storage (optional, for future use)
+
+// Event: Display Books
+document.addEventListener('DOMContentLoaded', UI.displayBooks);
+
 // Event: Add a Book
 document.querySelector('#submit').addEventListener('click', (e) => {
+    // Prevent actual submit
     e.preventDefault();
 
+    // Get form values
     const title = document.querySelector('#title').value;
     const author = document.querySelector('#author').value;
     const isbn = document.querySelector('#isbn').value;
 
-    if(title === '' || author === '' || isbn === '') {
+    // Validate
+    if (title === '' || author === '' || isbn === '') {
         alert('Please fill in all fields');
     } else {
+        // Instatiate book
         const book = new Book(title, author, isbn);
+
+        // Add Book to UI
         UI.addBookToList(book);
+
+        // Clear fields
         UI.clearFields();
     }
 });

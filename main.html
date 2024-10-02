@@ -3,31 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MyBookList</title>
-    <link rel="stylesheet" href="styles.css"> <!-- External CSS Link -->
+    <title>My Book List</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>My<span style="color:blue;">Book</span>List</h1>
-    <div class="form-group">
-        <input type="text" id="title" placeholder="Title">
-        <input type="text" id="author" placeholder="Author">
-        <input type="text" id="isbn" placeholder="ISBN#">
-        <button id="submit">Add Book</button>
+    <div class="container">
+        <h1>My<span class="blue">Book</span>List</h1>
+        <div class="form-group">
+            <input type="text" id="title" placeholder="Title">
+            <input type="text" id="author" placeholder="Author">
+            <input type="text" id="isbn" placeholder="ISBN#">
+            <button id="submit">Add Book</button>
+        </div>
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Author</th>
+                    <th>ISBN#</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody id="book-list"></tbody>
+        </table>
     </div>
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Author</th>
-                <th>ISBN#</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody id="book-list">
-            <!-- Book entries will go here -->
-        </tbody>
-    </table>
-    
+
     <script src="app.js"></script>
 </body>
 </html>
